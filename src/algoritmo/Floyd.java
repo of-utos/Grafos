@@ -1,30 +1,72 @@
 package algoritmo;
 
+/**
+ * Clase que utiliza el algoritmo de Floyd para poder obtener el camino mínimo
+ * en grafos dirigidos ponderados.<br>
+ */
 public class Floyd {
+	/**
+	 * MatrizAdyacencia de ponderación. <br>
+	 */
+	private int[][] matrizPonderacion;
+	/**
+	 * Tamaño de la matriz. <br>
+	 */
+	private int tamaño;
 
-	public static void algoritmoFloyd(int[][] matrizAdy) {
-		int cantPos = matrizAdy.length;
-		for (int k = 0; k < cantPos; k++) {
-			for (int i = 0; i < cantPos; i++) {
-				for (int j = 0; j < cantPos; j++) {
-					if (matrizAdy[i][k] != Integer.MAX_VALUE && matrizAdy[k][j] != Integer.MAX_VALUE
-							&& Math.min(matrizAdy[i][j], matrizAdy[i][k] + matrizAdy[k][j]) != matrizAdy[i][j]) {
-						matrizAdy[i][j] = matrizAdy[i][k] + matrizAdy[k][j];
+	/**
+	 * Crea una matriz de ponderación en la que se muestran todas las posibles
+	 * uniones entre nodos. <br>
+	 * 
+	 * @param matrizAdyacencia
+	 *            MatrizAdyacencia de adyacencia de un grafo. <br>
+	 */
+	public Floyd(final int[][] matrizAdyacencia) {
+		this.tamaño = matrizAdyacencia.length;
+		this.matrizPonderacion = matrizAdyacencia;
+		for (int k = 0; k < this.tamaño; k++) {
+			for (int i = 0; i < this.tamaño; i++) {
+				for (int j = 0; j < this.tamaño; j++) {
+					if (matrizAdyacencia[i][k] != Integer.MAX_VALUE && matrizAdyacencia[k][j] != Integer.MAX_VALUE
+							&& Math.min(matrizAdyacencia[i][j],
+									matrizAdyacencia[i][k] + matrizAdyacencia[k][j]) != matrizAdyacencia[i][j]) {
+						matrizPonderacion[i][j] = matrizAdyacencia[i][k] + matrizAdyacencia[k][j];
 					}
 				}
 			}
 		}
 	}
 
-	public static void main(String[] args) {
-		int[][] mat = { { 0, 8, Integer.MAX_VALUE }, { Integer.MAX_VALUE, 0, 2 },
-				{ Integer.MAX_VALUE, Integer.MAX_VALUE, 0 } };
-		algoritmoFloyd(mat);
-		for (int i = 0; i < mat.length; i++) {
-			for (int j = 0; j < mat.length; j++) {
-				System.out.print(mat[i][j] + " ");
-			}
-			System.out.print(System.lineSeparator());
+	/**
+	 * Devuelve la matriz de ponderación. <br>
+	 * 
+	 * @return MatrizAdyacencia de ponderación. <br>
+	 */
+	public int[][] getMatrizFloyd() {
+		return this.matrizPonderacion;
+	}
+
+	/**
+	 * Muestra la matriz de clausura transitiva. <br>
+	 */
+	public void mostarMatriz() {
+		System.out.println("Matriz de ponderación:\n");
+		System.out.print(" ");
+		for (int v = 0; v < this.tamaño; v++) {
+			System.out.print("   " + (v + 1));
 		}
+		System.out.println();
+		for (int v = 0; v < this.tamaño; v++) {
+			System.out.print((v + 1) + " ");
+			for (int w = 0; w < this.tamaño; w++) {
+				if (this.matrizPonderacion[v][w] == 0 || v == w || this.matrizPonderacion[v][w] == Integer.MAX_VALUE) {
+					System.out.print("  " + '\u221e' + " ");
+				} else {
+					System.out.print("  " + this.matrizPonderacion[v][w] + " ");
+				}
+			}
+			System.out.println();
+		}
+		System.out.println();
 	}
 }

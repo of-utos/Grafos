@@ -12,7 +12,7 @@ public class Warshall {
 	 */
 	private int tamaño;
 	/**
-	 * Matriz de clausura transitiva. <br>
+	 * MatrizAdyacencia de clausura transitiva. <br>
 	 */
 	private boolean[][] matrizClausura;
 
@@ -20,14 +20,16 @@ public class Warshall {
 	 * Crea una matriz de clausura transitiva en la que se muestran todas las
 	 * posibles uniones entre nodos. <br>
 	 * 
-	 * @param grafo
-	 *            Matriz de adyacencia del gráfo. <br>
+	 * @param matrizAdyacencia
+	 *            MatrizAdyacencia de adyacencia del gráfo. <br>
 	 */
-	public Warshall(final int[][] grafo) {
-		this.tamaño = grafo.length;
+	public Warshall(final int[][] matrizAdyacencia) {
+
+		this.tamaño = matrizAdyacencia.length;
+		this.matrizClausura = new boolean[this.tamaño][this.tamaño];
 		for (int i = 0; i < this.tamaño; i++) {
 			for (int j = 0; j < this.tamaño; j++) {
-				if (grafo[i][j] != 0) {
+				if (matrizAdyacencia[i][j] != Integer.MAX_VALUE) {
 					this.matrizClausura[i][j] = true;
 				}
 				this.matrizClausura[i][i] = true;
@@ -49,7 +51,7 @@ public class Warshall {
 	/**
 	 * Devuelve la matriz de clausura transitiva. <br>
 	 * 
-	 * @return Matriz de clausara transitiva. <br>
+	 * @return MatrizAdyacencia de clausara transitiva. <br>
 	 */
 	public boolean[][] getMatrizWarsahll() {
 		return this.matrizClausura;
@@ -68,11 +70,16 @@ public class Warshall {
 		for (int v = 0; v < this.tamaño; v++) {
 			System.out.print(v + " ");
 			for (int w = 0; w < this.tamaño; w++) {
-				if (this.matrizClausura[v][w]) {
-					System.out.print("  * ");
+				if (w == v) {
+					System.out.print("  " + '\u221e' + " ");
 				} else {
-					System.out.print("    ");
+					if (this.matrizClausura[v][w]) {
+						System.out.print("  1 ");
+					} else {
+						System.out.print("  0 ");
+					}
 				}
+
 			}
 			System.out.println();
 		}
