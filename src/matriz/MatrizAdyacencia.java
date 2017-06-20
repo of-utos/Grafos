@@ -101,7 +101,7 @@ public abstract class MatrizAdyacencia {
 	 * @param columna
 	 *            Columna de la matriz. <br>
 	 */
-	public abstract void cargarValorMatriz(final int valor, final int fila, final int columna);
+	protected abstract void cargarValorMatriz(final int valor, final int fila, final int columna);
 
 	/**
 	 * Devuelve el valor de una posición de la matriz. <br>

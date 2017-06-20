@@ -1,14 +1,15 @@
 package matriz;
 
 /**
- * Crea una matriz de adyacencia de un grafo dirigido. <br>
+ * Clase que administra la matriz de adyacencia de un grafo dirigido. <br>
  */
 public class MatrizDirigido extends MatrizAdyacencia {
 
 	/**
-	 * Genera una matriz de adyacencia con valores random. <br>
+	 * Crea una matriz de adyacencia de un grafo dirigido con valores random.
+	 * <br>
 	 * 
-	 * @param tamaño 
+	 * @param tamaño
 	 *            Tamaño de la matriz. <br>
 	 * @param random
 	 *            Número random de rango. <br>
@@ -23,7 +24,7 @@ public class MatrizDirigido extends MatrizAdyacencia {
 	}
 
 	@Override
-	public void cargarValorMatriz(final int valor, final int fila, final int columna) {
+	protected void cargarValorMatriz(final int valor, final int fila, final int columna) {
 		if (super.getValorMatriz(fila, columna) != Integer.MAX_VALUE) {
 			if (valor == 0 || fila == columna) {
 				super.setValorMatriz(fila, columna, Integer.MAX_VALUE);
