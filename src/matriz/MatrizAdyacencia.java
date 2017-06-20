@@ -101,16 +101,32 @@ public abstract class MatrizAdyacencia {
 	 * @param columna
 	 *            Columna de la matriz. <br>
 	 */
-	public void setValorMatrizDirigido(final int valor, final int fila, final int columna) {
-		if (this.matriz[columna][fila] != Integer.MAX_VALUE) {
-			if (valor == 0 || fila == columna) {
-				this.matriz[fila][columna] = Integer.MAX_VALUE;
-			} else {
-				this.matriz[fila][columna] = valor;
-				this.matriz[columna][fila] = Integer.MAX_VALUE;
-			}
-		} else {
-			this.matriz[fila][columna] = Integer.MAX_VALUE;
-		}
+	public abstract void cargarValorMatriz(final int valor, final int fila, final int columna);
+
+	/**
+	 * Devuelve el valor de una posición de la matriz. <br>
+	 * 
+	 * @param fila
+	 *            Fila de la matriz. <br>
+	 * @param columna
+	 *            Columna de la matriz. <br>
+	 * @return
+	 */
+	public int getValorMatriz(final int fila, final int columna) {
+		return this.matriz[fila][columna];
+	}
+
+	/**
+	 * Estabelece un valor en la matriz. <br>
+	 * 
+	 * @param fila
+	 *            Fila de la matriz. <br>
+	 * @param columna
+	 *            Columna de la matriz. <br>
+	 * @param valor
+	 *            Valor a insertar. <br>
+	 */
+	public void setValorMatriz(final int fila, final int columna, final int valor) {
+		this.matriz[fila][columna] = valor;
 	}
 }

@@ -8,7 +8,7 @@ import matriz.MatrizDirigido;
 public class TestWarshall {
 	private int matriz[][];
 	private static final int TAMAÑO = 4;
-	private static final int RANDOM = 3;
+	private static final int RANDOM = 4;
 	private MatrizDirigido matrizDirigido;
 
 	@Before

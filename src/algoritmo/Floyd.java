@@ -10,7 +10,9 @@ public class Floyd {
 	 */
 	private int[][] matrizPonderacion;
 	/**
-	 * Tamaño de la matriz. <br>
+	 * Tamaño de la matriz.
+	 * <p>
+	 * Es la cantidad total de nodos del grafo. <br>
 	 */
 	private int tamaño;
 

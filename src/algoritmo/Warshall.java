@@ -8,7 +8,9 @@ package algoritmo;
  */
 public class Warshall {
 	/**
-	 * Tamaño de la matriz. <br>
+	 * Tamaño de la matriz.
+	 * <p>
+	 * Es la cantidad total de nodos en el grafo. <br>
 	 */
 	private int tamaño;
 	/**
@@ -24,7 +26,6 @@ public class Warshall {
 	 *            MatrizAdyacencia de adyacencia del gráfo. <br>
 	 */
 	public Warshall(final int[][] matrizAdyacencia) {
-
 		this.tamaño = matrizAdyacencia.length;
 		this.matrizClausura = new boolean[this.tamaño][this.tamaño];
 		for (int i = 0; i < this.tamaño; i++) {
@@ -32,7 +33,7 @@ public class Warshall {
 				if (matrizAdyacencia[i][j] != Integer.MAX_VALUE) {
 					this.matrizClausura[i][j] = true;
 				}
-				this.matrizClausura[i][i] = true;
+				this.matrizClausura[i][i] = false;
 			}
 		}
 		for (int i = 0; i < this.tamaño; i++) {
@@ -79,7 +80,6 @@ public class Warshall {
 						System.out.print("  0 ");
 					}
 				}
-
 			}
 			System.out.println();
 		}
