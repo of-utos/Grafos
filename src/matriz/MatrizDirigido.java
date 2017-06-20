@@ -1,4 +1,4 @@
-package utilidades;
+package matriz;
 
 /**
  * Crea una matriz de adyacencia de un grafo dirigido. <br>

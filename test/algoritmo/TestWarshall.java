@@ -5,8 +5,7 @@ import org.junit.Test;
 
 import matriz.MatrizDirigido;
 
-public class TestFloyd {
-
+public class TestWarshall {
 	private int matriz[][];
 	private static final int TAMAÑO = 4;
 	private static final int RANDOM = 3;
@@ -21,7 +20,7 @@ public class TestFloyd {
 	@Test
 	public void test() {
 		matrizDirigido.mostarMatriz();
-		Floyd matrizFloyd = new Floyd(matriz);
+		Warshall matrizFloyd = new Warshall(matriz);
 		matrizFloyd.mostarMatriz();
 	}
 }

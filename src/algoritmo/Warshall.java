@@ -64,11 +64,11 @@ public class Warshall {
 		System.out.println("Matriz de clausura transitiva:\n");
 		System.out.print(" ");
 		for (int v = 0; v < this.tamaño; v++) {
-			System.out.print("   " + v);
+			System.out.print("   " + (v + 1));
 		}
 		System.out.println();
 		for (int v = 0; v < this.tamaño; v++) {
-			System.out.print(v + " ");
+			System.out.print((v + 1) + " ");
 			for (int w = 0; w < this.tamaño; w++) {
 				if (w == v) {
 					System.out.print("  " + '\u221e' + " ");
