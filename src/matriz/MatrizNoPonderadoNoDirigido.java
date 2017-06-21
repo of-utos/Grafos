@@ -13,7 +13,7 @@ public class MatrizNoPonderadoNoDirigido extends MatrizNoDirigido {
 	 *            Tamaño de la matriz. <br>
 	 */
 	public MatrizNoPonderadoNoDirigido(final int tamaño) {
-		super(tamaño);
+		super(tamaño, 5);
 	}
 
 	/**

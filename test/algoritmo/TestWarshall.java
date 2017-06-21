@@ -3,13 +3,14 @@ package algoritmo;
 import org.junit.Before;
 import org.junit.Test;
 
+import matriz.MatrizAdyacencia;
 import matriz.MatrizDirigido;
 
 public class TestWarshall {
 	private int matriz[][];
 	private static final int TAMAÑO = 4;
-	private static final int RANDOM = 4;
-	private MatrizDirigido matrizDirigido;
+	private static final int RANDOM = 2;
+	private MatrizAdyacencia matrizDirigido;
 
 	@Before
 	public void iniciar() {

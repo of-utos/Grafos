@@ -1,12 +1,49 @@
 package coloreo;
 
+/**
+ * Clase que administra el coloreo de un grafo.
+ * <p>
+ * Utiliza la menor cantidad de colores posibles. <br>
+ */
 public class Coloreo {
+	/**
+	 * Cantidad de colores a utilizar. <br>
+	 */
 	private int cantidadColores;
+	/**
+	 * Vector de nodos. <br>
+	 */
 	private Nodo[] nodos;
+	/**
+	 * Tamaño de la matriz de adyacencia.
+	 * <p>
+	 * Cantidad de nodos del grafo. <br>
+	 */
 	private int cantidadNodos;
+	/**
+	 * Matriz de adyacencia del grafo. <br>
+	 */
 	private boolean[][] matrizAdyacencia;
+	/**
+	 * Algoritmo de coloreo. <br>
+	 */
 	private String algoritmo;
 
+	/**
+	 * Colorea un grafo, según el algoritmo seleccionado.
+	 * <p>
+	 * <b>Algoritmo de Matula</b>: Empieza por el nodo de grado mínimo hasta
+	 * llegar al de grado máximo. <br>
+	 * <b>Algoritmo de Welsh-Powell</b>: Empieza por el nodo de grado máximo
+	 * hasta llegar al de grado mínimo. <br>
+	 * <b>Algoritmo secuencial aleatorio</b>: No tiene en cuenta el grado del
+	 * nodo. <br>
+	 * 
+	 * @param matriz
+	 *            Matriz de adyacencia del grafo. <br>
+	 * @param algoritmo
+	 *            Algoritmo de coloreo a utilizar. <br>
+	 */
 	public Coloreo(final int[][] matriz, final String algoritmo) {
 		this.algoritmo = algoritmo;
 		this.cantidadNodos = matriz.length;
@@ -184,6 +221,10 @@ public class Coloreo {
 		return this.matrizAdyacencia[nodoUno.getNumero()][nodoDos.getNumero()] == true;
 	}
 
+	/**
+	 * Muestra el algoritmo utilizado y la cantidad de colores que se necesito
+	 * para colorearlo. <br>
+	 */
 	public void mostrarResultado() {
 		if (this.algoritmo == Condicion.SECAL.name()) {
 			System.out.println("Algoritmo: Secuencial aleatorio");

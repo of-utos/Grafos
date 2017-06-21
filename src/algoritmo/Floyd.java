@@ -69,6 +69,6 @@ public class Floyd {
 			}
 			System.out.println();
 		}
-		System.out.println();
+		System.out.print("\n");
 	}
 }

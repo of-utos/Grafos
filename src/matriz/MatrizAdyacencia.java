@@ -3,7 +3,7 @@ package matriz;
 import java.util.Random;
 
 /**
- * Crea la matriz de adyacencia de un grafo. <br>
+ * Clase que administra la matriz de adyacencia de un grafo. <br>
  */
 public abstract class MatrizAdyacencia {
 	/**
@@ -40,10 +40,16 @@ public abstract class MatrizAdyacencia {
 	/**
 	 * Devuelve la matriz. <br>
 	 * 
-	 * @return MatrizAdyacencia. <br>
+	 * @return Matriz de Adyacencia. <br>
 	 */
 	public int[][] getMatriz() {
-		return this.matriz;
+		int[][] nuevaMatriz = new int[this.tamaño][this.tamaño];
+		for (int i = 0; i < this.tamaño; i++) {
+			for (int j = 0; j < this.tamaño; j++) {
+				nuevaMatriz[i][j] = this.matriz[i][j];
+			}
+		}
+		return nuevaMatriz;
 	}
 
 	/**

@@ -81,7 +81,7 @@ public class Warshall {
 					}
 				}
 			}
-			System.out.println();
+			System.out.print("\n");
 		}
 	}
 }

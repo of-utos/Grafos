@@ -11,9 +11,11 @@ public class MatrizNoDirigido extends MatrizAdyacencia {
 	 * 
 	 * @param tamaño
 	 *            Tamaño de la matriz. <br>
+	 * @param random
+	 *            Valor límite para el random. <br>
 	 */
-	public MatrizNoDirigido(final int tamaño) {
-		super(tamaño, 5);
+	public MatrizNoDirigido(final int tamaño, final int random) {
+		super(tamaño, random);
 		for (int i = 0; i < super.getTamaño(); i++) {
 			for (int j = 0; j < super.getTamaño(); j++) {
 				cargarValorMatriz(super.getRandom(), i, j);
