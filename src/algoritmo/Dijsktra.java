@@ -1,5 +1,8 @@
 package algoritmo;
 
+/**
+ * El grafo puede ser dirigido o no. El grafo debe ser ponderado. <br>
+ */
 public class Dijsktra {
 	private int[][] matrizAdy;
 	private boolean[] visitados;
@@ -8,13 +11,14 @@ public class Dijsktra {
 	private int cantidadDeNodos;
 	private int[] ruta;
 
-	public Dijsktra(int[][] matAdy, int nodoInicio, int cantNodos) {
+	public Dijsktra(final int[][] matAdy, final int nodoInicio) {
 		this.matrizAdy = matAdy;
 		this.nodoActual = nodoInicio;
-		this.cantidadDeNodos = cantNodos;
-		this.visitados = new boolean[cantNodos];
-		this.costos = new int[cantNodos];
-		this.ruta = new int[cantNodos];
+		this.nodoActual--;
+		this.cantidadDeNodos = matAdy.length;
+		this.visitados = new boolean[this.cantidadDeNodos];
+		this.costos = new int[this.cantidadDeNodos];
+		this.ruta = new int[this.cantidadDeNodos];
 	}
 
 	public void algoritmoDijsktra() {
@@ -44,7 +48,6 @@ public class Dijsktra {
 				v = i;
 			}
 		}
-
 		return v;
 	}
 
@@ -56,13 +59,14 @@ public class Dijsktra {
 		}
 	}
 
-	public void ruta(int destino) {
-		System.out.println(destino);
-		while (ruta[destino] != 0) {
-			System.out.println(ruta[destino]);
-			destino = ruta[destino];
+	public void ruta(final int destino) {
+		int i = destino;
+		System.out.print(this.nodoActual);
+		while (ruta[i] != this.nodoActual) {
+			System.out.print(" -> " + (ruta[i] + 1));
+			i = ruta[i];
 		}
-		System.out.println(ruta[destino]);
+		System.out.print(" -> " + destino + "\n");
+		System.out.println("Peso de la ruta: " + this.costos[destino]);
 	}
-
 }

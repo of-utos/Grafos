@@ -9,7 +9,7 @@ import matriz.MatrizNoDirigido;
 public class TestPrim {
 	private int matriz[][];
 	private static final int TAMAÑO = 5;
-	private static final int RANDOM = 5;
+	private static final int RANDOM = 10;
 	private MatrizAdyacencia matrizDirigido;
 
 	@Before

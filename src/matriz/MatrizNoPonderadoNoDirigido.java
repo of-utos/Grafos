@@ -24,16 +24,16 @@ public class MatrizNoPonderadoNoDirigido extends MatrizNoDirigido {
 		System.out.println("Matriz de adyacencia:\n");
 		System.out.print(" ");
 		for (int v = 0; v < super.getTamaño(); v++) {
-			System.out.print("   " + (v + 1));
+			System.out.print("\t" + (v + 1));
 		}
 		System.out.println();
 		for (int v = 0; v < super.getTamaño(); v++) {
-			System.out.print((v + 1) + " ");
+			System.out.print((v + 1));
 			for (int w = 0; w < super.getTamaño(); w++) {
 				if (super.getValorMatriz(v, w) != Integer.MAX_VALUE) {
-					System.out.print("  1 ");
+					System.out.print("\t1");
 				} else {
-					System.out.print("  " + '\u221e' + " ");
+					System.out.print("\t" + '\u221e');
 				}
 			}
 			System.out.println();

@@ -4,7 +4,9 @@ package algoritmo;
  * Clase que utiliza el algoritmo de Warshall para poder obtener todas las
  * posibles uniones entre nodos, directa o indirectamente.
  * <p>
- * No tiene en cuenta el costo ni el camino. <br>
+ * No tiene en cuenta el costo ni el camino.
+ * <p>
+ * El grafo puede ser dirigido o no dirigido, y ponderado o no. <br>
  */
 public class Warshall {
 	/**
@@ -65,19 +67,19 @@ public class Warshall {
 		System.out.println("Matriz de clausura transitiva:\n");
 		System.out.print(" ");
 		for (int v = 0; v < this.tamaño; v++) {
-			System.out.print("   " + (v + 1));
+			System.out.print("\t" + (v + 1));
 		}
 		System.out.println();
 		for (int v = 0; v < this.tamaño; v++) {
-			System.out.print((v + 1) + " ");
+			System.out.print((v + 1));
 			for (int w = 0; w < this.tamaño; w++) {
 				if (w == v) {
-					System.out.print("  " + '\u221e' + " ");
+					System.out.print("\t" + '\u221e');
 				} else {
 					if (this.matrizClausura[v][w]) {
-						System.out.print("  1 ");
+						System.out.print("\t1");
 					} else {
-						System.out.print("  0 ");
+						System.out.print("\t0");
 					}
 				}
 			}

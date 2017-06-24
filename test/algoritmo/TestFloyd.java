@@ -9,8 +9,8 @@ import matriz.MatrizDirigido;
 public class TestFloyd {
 
 	private int matriz[][];
-	private static final int TAMAÑO = 4;
-	private static final int RANDOM = 3;
+	private static final int TAMAÑO = 5;
+	private static final int RANDOM = 10;
 	private MatrizAdyacencia matrizDirigido;
 
 	@Before
