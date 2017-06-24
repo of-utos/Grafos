@@ -4,31 +4,46 @@ package algoritmo;
  * El grafo puede ser dirigido o no. El grafo debe ser ponderado. <br>
  */
 public class Dijsktra {
+	/**
+	 * Matriz de adyacencia del grafo. <br>
+	 */
 	private int[][] matrizAdy;
+	/**
+	 * Nodos ya visitados. <br>
+	 */
 	private boolean[] visitados;
+	/**
+	 * Costo para llegar a un nodo. <br>
+	 */
 	private int[] costos;
-	private int nodoActual;
-	private int cantidadDeNodos;
+	/**
+	 * Nodo inicial. <br>
+	 */
+	private int nodoInicio;
+	/**
+	 * Cantidad de nodos del grafo. <br>
+	 */
+	private int cantidadNodos;
 	private int[] ruta;
 
 	public Dijsktra(final int[][] matAdy, final int nodoInicio) {
 		this.matrizAdy = matAdy;
-		this.nodoActual = nodoInicio;
-		this.nodoActual--;
-		this.cantidadDeNodos = matAdy.length;
-		this.visitados = new boolean[this.cantidadDeNodos];
-		this.costos = new int[this.cantidadDeNodos];
-		this.ruta = new int[this.cantidadDeNodos];
+		this.nodoInicio = nodoInicio;
+		this.nodoInicio--;
+		this.cantidadNodos = matAdy.length;
+		this.visitados = new boolean[this.cantidadNodos];
+		this.costos = new int[this.cantidadNodos];
+		this.ruta = new int[this.cantidadNodos];
 	}
 
 	public void algoritmoDijsktra() {
 		valoresIniciales();
-		visitados[nodoActual] = true;
-		costos[nodoActual] = 0;
-		for (int i = 0; i < cantidadDeNodos; i++) {
+		visitados[nodoInicio] = true;
+		costos[nodoInicio] = 0;
+		for (int i = 0; i < cantidadNodos; i++) {
 			int v = minimo();
 			visitados[v] = true;
-			for (int j = 0; j < cantidadDeNodos; j++) {
+			for (int j = 0; j < cantidadNodos; j++) {
 				if (!visitados[j]) {
 					if ((costos[v] + matrizAdy[v][j]) < costos[j]) {
 						costos[j] = costos[v] + matrizAdy[v][j];
@@ -42,7 +57,7 @@ public class Dijsktra {
 	private int minimo() {
 		int min = Integer.MAX_VALUE;
 		int v = 1;
-		for (int i = 0; i < cantidadDeNodos; i++) {
+		for (int i = 0; i < cantidadNodos; i++) {
 			if (!visitados[i] && costos[i] <= min) {
 				min = costos[i];
 				v = i;
@@ -52,17 +67,23 @@ public class Dijsktra {
 	}
 
 	private void valoresIniciales() {
-		for (int i = 0; i < cantidadDeNodos; i++) {
+		for (int i = 0; i < cantidadNodos; i++) {
 			visitados[i] = false;
-			costos[i] = matrizAdy[nodoActual][i];
-			ruta[i] = nodoActual;
+			costos[i] = matrizAdy[nodoInicio][i];
+			ruta[i] = nodoInicio;
+		}
+	}
+
+	public void resultado() {
+		for (int i = 0; i < this.cantidadNodos; i++) {
+			System.out.println(this.ruta[i] + "\t" + this.costos[i]);
 		}
 	}
 
 	public void ruta(final int destino) {
 		int i = destino;
-		System.out.print(this.nodoActual);
-		while (ruta[i] != this.nodoActual) {
+		System.out.print(this.nodoInicio);
+		while (ruta[i] != this.nodoInicio) {
 			System.out.print(" -> " + (ruta[i] + 1));
 			i = ruta[i];
 		}

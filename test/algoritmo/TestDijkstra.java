@@ -28,6 +28,7 @@ public class TestDijkstra {
 		matrizDirigido.mostarMatriz();
 		Dijsktra matrizDijkstra = new Dijsktra(matriz, 2);
 		matrizDijkstra.algoritmoDijsktra();
-		matrizDijkstra.ruta(3);
+		// matrizDijkstra.ruta(3);
+		matrizDijkstra.resultado();
 	}
 }

@@ -145,7 +145,11 @@ public abstract class MatrizAdyacencia {
 	public void setMatriz(final int[][] matriz) {
 		for (int fila = 0; fila < matriz.length; fila++) {
 			for (int columna = 0; columna < matriz.length; columna++) {
-				this.matriz[fila][columna] = matriz[fila][columna];
+				if (matriz[fila][columna] != 0) {
+					this.matriz[fila][columna] = matriz[fila][columna];
+				} else {
+					this.matriz[fila][columna] = Integer.MAX_VALUE;
+				}
 			}
 		}
 	}
