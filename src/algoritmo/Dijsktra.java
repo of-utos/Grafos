@@ -31,8 +31,7 @@ public class Dijsktra {
 
 	public Dijsktra(final int[][] matrizAdyacencia, final int nodoInicio) {
 		this.matrizAdy = matrizAdyacencia;
-		this.nodoInicio = nodoInicio;
-		this.nodoInicio--;
+		this.nodoInicio = nodoInicio - 1;
 		this.cantidadNodos = matrizAdyacencia.length;
 		this.visitados = new boolean[this.cantidadNodos];
 		this.costos = new int[this.cantidadNodos];
@@ -40,29 +39,28 @@ public class Dijsktra {
 		inicializarEstructurasInternas();
 		this.visitados[this.nodoInicio] = true;
 		this.costos[this.nodoInicio] = Integer.MAX_VALUE;
-		for (int i = 0; i < this.cantidadNodos; i++) {
-			int v = minimo();
-
-			System.out.println("W: " + (v + 1));
-
-			visitados[v] = true;
-			for (int j = 0; j < cantidadNodos; j++) {
-				if (!visitados[j]) {
-					if ((costos[j] + matrizAdy[v][j]) < costos[v]) {
-						costos[j] = costos[v] + matrizAdy[v][j];
-						System.out.println("\tNueva ruta: " + (j + 1));
-						ruta[j] = v;
+		int i = 0;
+		int siguiente = minimo();
+		while (i < cantidadNodos && siguiente != -1) {
+			visitados[siguiente] = true;
+			for (int adyacente = 0; adyacente < cantidadNodos; adyacente++) {
+				if (!visitados[adyacente]) {
+					if (matrizAdy[siguiente][adyacente] != Integer.MAX_VALUE
+							&& (costos[siguiente] + matrizAdy[siguiente][adyacente]) < costos[adyacente]) {
+						costos[adyacente] = costos[siguiente] + matrizAdy[siguiente][adyacente];
+						ruta[adyacente] = siguiente;
 					}
 				}
 			}
+			siguiente = minimo();
 		}
 	}
 
 	private int minimo() {
 		int valorMinimo = Integer.MAX_VALUE;
-		int indiceMinimo = 1;
+		int indiceMinimo = -1;
 		for (int i = 0; i < cantidadNodos; i++) {
-			if (!visitados[i] && costos[i] <= valorMinimo) {
+			if (!visitados[i] && costos[i] < valorMinimo) {
 				valorMinimo = costos[i];
 				indiceMinimo = i;
 			}
@@ -83,7 +81,7 @@ public class Dijsktra {
 	public void resultado() {
 		System.out.println("Costo para llegar los nodos desde " + (this.nodoInicio + 1) + ":");
 		for (int i = 0; i < this.cantidadNodos; i++) {
-			if (this.ruta[i] != -1) {
+			if (this.costos[i] != Integer.MAX_VALUE) {
 				System.out.println((i + 1) + "\t" + this.costos[i]);
 			} else {
 				System.out.println((i + 1) + "\t" + '\u221e');
@@ -99,15 +97,17 @@ public class Dijsktra {
 	 *            Nodo a llegar. <br>
 	 */
 	public void ruta(final int destino) {
-		int i = destino;
-		System.out.print(this.nodoInicio);
-		if (ruta[destino] != -1) {
-			while (ruta[i] != this.nodoInicio) {
-				System.out.print(" -> " + (ruta[i] + 1));
-				i = ruta[i];
+		int anterior = destino - 1;
+		if (this.costos[anterior] != Integer.MAX_VALUE) {
+			System.out.print((this.nodoInicio + 1));
+			while (ruta[anterior] != -1) {
+				System.out.print(" -> " + (ruta[anterior] + 1));
+				anterior = ruta[anterior];
 			}
 			System.out.print(" -> " + destino + "\n");
+			System.out.println("Peso de la ruta: " + this.costos[destino - 1]);
+		} else {
+			System.out.println("No existe camino entre " + (this.nodoInicio + 1) + " y " + destino + ".");
 		}
-		System.out.println("Peso de la ruta: " + this.costos[destino]);
 	}
 }
