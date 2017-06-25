@@ -2,7 +2,9 @@ package algoritmo;
 
 /**
  * Clase que utiliza el algoritmo de Floyd para poder obtener el camino mínimo
- * en grafos dirigidos ponderados.<br>
+ * en grafos.
+ * <p>
+ * El grafo puede ser dirigido o no dirigido. Debe ser ponderado. <br>
  */
 public class Floyd {
 	/**
@@ -55,16 +57,16 @@ public class Floyd {
 		System.out.println("Matriz de ponderación:\n");
 		System.out.print(" ");
 		for (int v = 0; v < this.tamaño; v++) {
-			System.out.print("   " + (v + 1));
+			System.out.print("\t" + (v + 1));
 		}
 		System.out.println();
 		for (int v = 0; v < this.tamaño; v++) {
-			System.out.print((v + 1) + " ");
+			System.out.print((v + 1));
 			for (int w = 0; w < this.tamaño; w++) {
 				if (this.matrizPonderacion[v][w] == 0 || v == w || this.matrizPonderacion[v][w] == Integer.MAX_VALUE) {
-					System.out.print("  " + '\u221e' + " ");
+					System.out.print("\t" + '\u221e');
 				} else {
-					System.out.print("  " + this.matrizPonderacion[v][w] + " ");
+					System.out.print("\t" + this.matrizPonderacion[v][w]);
 				}
 			}
 			System.out.println();

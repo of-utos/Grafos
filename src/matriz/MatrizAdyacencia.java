@@ -59,16 +59,16 @@ public abstract class MatrizAdyacencia {
 		System.out.println("Matriz de adyacencia:\n");
 		System.out.print(" ");
 		for (int v = 0; v < this.tamaño; v++) {
-			System.out.print("   " + (v + 1));
+			System.out.print("\t" + (v + 1));
 		}
 		System.out.println();
 		for (int v = 0; v < this.tamaño; v++) {
-			System.out.print((v + 1) + " ");
+			System.out.print((v + 1));
 			for (int w = 0; w < this.tamaño; w++) {
 				if (this.matriz[v][w] != Integer.MAX_VALUE) {
-					System.out.print("  " + this.matriz[v][w] + " ");
+					System.out.print("\t" + this.matriz[v][w]);
 				} else {
-					System.out.print("  " + '\u221e' + " ");
+					System.out.print("\t" + '\u221e');
 				}
 			}
 			System.out.println();
@@ -134,5 +134,23 @@ public abstract class MatrizAdyacencia {
 	 */
 	public void setValorMatriz(final int fila, final int columna, final int valor) {
 		this.matriz[fila][columna] = valor;
+	}
+
+	/**
+	 * Carga una matriz como matriz de adyacencia de un grafo. <br>
+	 * 
+	 * @param matriz
+	 *            Matriz. <br>
+	 */
+	public void setMatriz(final int[][] matriz) {
+		for (int fila = 0; fila < matriz.length; fila++) {
+			for (int columna = 0; columna < matriz.length; columna++) {
+				if (matriz[fila][columna] != 0) {
+					this.matriz[fila][columna] = matriz[fila][columna];
+				} else {
+					this.matriz[fila][columna] = Integer.MAX_VALUE;
+				}
+			}
+		}
 	}
 }
