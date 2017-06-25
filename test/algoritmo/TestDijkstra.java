@@ -17,8 +17,15 @@ public class TestDijkstra {
 	public void iniciar() {
 		matrizDirigido = new MatrizDirigido(TAMAÑO, RANDOM);
 		// matriz = matrizDirigido.getMatriz();
-		int[][] casoForzado = { { 0, 100, 30, 20, 0 }, { 0, 0, 0, 0, 0 }, { 0, 10, 0, 0, 10 }, { 0, 0, 0, 0, 0 },
+		int[][] casoForzado = { { 0, 100, 30, 20, 0 }, { 0, 0, 0, 0, 0 }, { 0, 40, 0, 0, 10 }, { 0, 0, 0, 0, 0 },
 				{ 0, 30, 0, 40, 0 } };
+		for (int i = 0; i < casoForzado.length; i++) {
+			for (int j = 0; j < casoForzado.length; j++) {
+				if (casoForzado[i][j] == 0) {
+					casoForzado[i][j] = Integer.MAX_VALUE;
+				}
+			}
+		}
 		matriz = casoForzado;
 		matrizDirigido.setMatriz(casoForzado);
 	}
@@ -26,8 +33,8 @@ public class TestDijkstra {
 	@Test
 	public void test() {
 		matrizDirigido.mostarMatriz();
-		Dijsktra matrizDijkstra = new Dijsktra(matriz, 2);
-		matrizDijkstra.algoritmoDijsktra();
+		Dijsktra matrizDijkstra = new Dijsktra(matriz, 1);
+		// matrizDijkstra.algoritmoDijsktra();
 		// matrizDijkstra.ruta(3);
 		matrizDijkstra.resultado();
 	}

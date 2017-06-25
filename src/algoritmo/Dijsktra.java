@@ -24,29 +24,33 @@ public class Dijsktra {
 	 * Cantidad de nodos del grafo. <br>
 	 */
 	private int cantidadNodos;
+	/**
+	 * 
+	 */
 	private int[] ruta;
 
-	public Dijsktra(final int[][] matAdy, final int nodoInicio) {
-		this.matrizAdy = matAdy;
+	public Dijsktra(final int[][] matrizAdyacencia, final int nodoInicio) {
+		this.matrizAdy = matrizAdyacencia;
 		this.nodoInicio = nodoInicio;
 		this.nodoInicio--;
-		this.cantidadNodos = matAdy.length;
+		this.cantidadNodos = matrizAdyacencia.length;
 		this.visitados = new boolean[this.cantidadNodos];
 		this.costos = new int[this.cantidadNodos];
 		this.ruta = new int[this.cantidadNodos];
-	}
-
-	public void algoritmoDijsktra() {
-		valoresIniciales();
-		visitados[nodoInicio] = true;
-		costos[nodoInicio] = 0;
-		for (int i = 0; i < cantidadNodos; i++) {
+		inicializarEstructurasInternas();
+		this.visitados[this.nodoInicio] = true;
+		this.costos[this.nodoInicio] = Integer.MAX_VALUE;
+		for (int i = 0; i < this.cantidadNodos; i++) {
 			int v = minimo();
+
+			System.out.println("W: " + (v + 1));
+
 			visitados[v] = true;
 			for (int j = 0; j < cantidadNodos; j++) {
 				if (!visitados[j]) {
-					if ((costos[v] + matrizAdy[v][j]) < costos[j]) {
+					if ((costos[j] + matrizAdy[v][j]) < costos[v]) {
 						costos[j] = costos[v] + matrizAdy[v][j];
+						System.out.println("\tNueva ruta: " + (j + 1));
 						ruta[j] = v;
 					}
 				}
@@ -55,39 +59,55 @@ public class Dijsktra {
 	}
 
 	private int minimo() {
-		int min = Integer.MAX_VALUE;
-		int v = 1;
+		int valorMinimo = Integer.MAX_VALUE;
+		int indiceMinimo = 1;
 		for (int i = 0; i < cantidadNodos; i++) {
-			if (!visitados[i] && costos[i] <= min) {
-				min = costos[i];
-				v = i;
+			if (!visitados[i] && costos[i] <= valorMinimo) {
+				valorMinimo = costos[i];
+				indiceMinimo = i;
 			}
 		}
-		return v;
+		return indiceMinimo;
 	}
 
-	private void valoresIniciales() {
+	/**
+	 * Inicializa los vectores de Dijkstra. <br>
+	 */
+	private void inicializarEstructurasInternas() {
 		for (int i = 0; i < cantidadNodos; i++) {
-			visitados[i] = false;
 			costos[i] = matrizAdy[nodoInicio][i];
-			ruta[i] = nodoInicio;
+			ruta[i] = -1;
 		}
 	}
 
 	public void resultado() {
+		System.out.println("Costo para llegar los nodos desde " + (this.nodoInicio + 1) + ":");
 		for (int i = 0; i < this.cantidadNodos; i++) {
-			System.out.println(this.ruta[i] + "\t" + this.costos[i]);
+			if (this.ruta[i] != -1) {
+				System.out.println((i + 1) + "\t" + this.costos[i]);
+			} else {
+				System.out.println((i + 1) + "\t" + '\u221e');
+			}
+
 		}
 	}
 
+	/**
+	 * Muestra la ruta a tomar para llegar a un nodo .<br>
+	 * 
+	 * @param destino
+	 *            Nodo a llegar. <br>
+	 */
 	public void ruta(final int destino) {
 		int i = destino;
 		System.out.print(this.nodoInicio);
-		while (ruta[i] != this.nodoInicio) {
-			System.out.print(" -> " + (ruta[i] + 1));
-			i = ruta[i];
+		if (ruta[destino] != -1) {
+			while (ruta[i] != this.nodoInicio) {
+				System.out.print(" -> " + (ruta[i] + 1));
+				i = ruta[i];
+			}
+			System.out.print(" -> " + destino + "\n");
 		}
-		System.out.print(" -> " + destino + "\n");
 		System.out.println("Peso de la ruta: " + this.costos[destino]);
 	}
 }
