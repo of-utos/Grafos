@@ -3,7 +3,7 @@ package coloreo;
 /**
  * Condición de coloreo de un grafo. <br>
  */
-public enum Condicion {
+public enum Recorrido {
 	/**
 	 * Colorea utilizando el algoritmo de coloreo de Matula.
 	 * <p>

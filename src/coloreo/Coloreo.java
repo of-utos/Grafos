@@ -41,11 +41,11 @@ public class Coloreo {
 	 * 
 	 * @param matriz
 	 *            Matriz de adyacencia del grafo. <br>
-	 * @param algoritmo
-	 *            Algoritmo de coloreo a utilizar. <br>
+	 * @param recorrido
+	 *            Recorrido a utilizar. <br>
 	 */
-	public Coloreo(final int[][] matriz, final String algoritmo) {
-		this.algoritmo = algoritmo;
+	public Coloreo(final int[][] matriz, final String recorrido) {
+		this.algoritmo = recorrido;
 		this.cantidadNodos = matriz.length;
 		this.matrizAdyacencia = new boolean[this.cantidadNodos][this.cantidadNodos];
 		this.nodos = new Nodo[this.cantidadNodos];
@@ -62,13 +62,13 @@ public class Coloreo {
 				this.matrizAdyacencia[i][i] = false;
 			}
 		}
-		if (this.algoritmo == Condicion.SECAL.name()) {
+		if (this.algoritmo == Recorrido.SECAL.name()) {
 			colorearSecuencialAleatorio();
 		}
-		if (this.algoritmo == Condicion.WELSHPOW.name()) {
+		if (this.algoritmo == Recorrido.WELSHPOW.name()) {
 			colorearPowell();
 		}
-		if (this.algoritmo == Condicion.MATULA.name()) {
+		if (this.algoritmo == Recorrido.MATULA.name()) {
 			colorearMatula();
 		}
 	}
@@ -226,13 +226,13 @@ public class Coloreo {
 	 * para colorearlo. <br>
 	 */
 	public void mostrarResultado() {
-		if (this.algoritmo == Condicion.SECAL.name()) {
+		if (this.algoritmo == Recorrido.SECAL.name()) {
 			System.out.println("Algoritmo: Secuencial aleatorio");
 		}
-		if (this.algoritmo == Condicion.WELSHPOW.name()) {
+		if (this.algoritmo == Recorrido.WELSHPOW.name()) {
 			System.out.println("Algoritmo: Welsh-Powell");
 		}
-		if (this.algoritmo == Condicion.MATULA.name()) {
+		if (this.algoritmo == Recorrido.MATULA.name()) {
 			System.out.println("Algoritmo: Matula");
 		}
 		System.out.println("Cantidad de colores: " + this.cantidadColores);

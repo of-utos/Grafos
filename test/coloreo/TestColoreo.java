@@ -19,21 +19,21 @@ public class TestColoreo {
 	@Test
 	public void testMatula() {
 		this.matrizNoPonderadaNoDirigida.mostarMatriz();
-		this.coloreo = new Coloreo(this.matriz, Condicion.MATULA.name());
+		this.coloreo = new Coloreo(this.matriz, Recorrido.MATULA.name());
 		this.coloreo.mostrarResultado();
 	}
 
 	@Test
 	public void testWellshPowell() {
 		this.matrizNoPonderadaNoDirigida.mostarMatriz();
-		this.coloreo = new Coloreo(this.matriz, Condicion.WELSHPOW.name());
+		this.coloreo = new Coloreo(this.matriz, Recorrido.WELSHPOW.name());
 		this.coloreo.mostrarResultado();
 	}
 
 	@Test
 	public void testSecuencialAleatorio() {
 		this.matrizNoPonderadaNoDirigida.mostarMatriz();
-		this.coloreo = new Coloreo(this.matriz, Condicion.SECAL.name());
+		this.coloreo = new Coloreo(this.matriz, Recorrido.SECAL.name());
 		this.coloreo.mostrarResultado();
 	}
 }

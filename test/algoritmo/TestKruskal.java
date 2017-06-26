@@ -6,7 +6,7 @@ import org.junit.Test;
 import matriz.MatrizAdyacencia;
 import matriz.MatrizNoDirigido;
 
-public class TestPrim {
+public class TestKruskal {
 	private int matriz[][];
 	private static final int TAMAÑO = 7;
 	private static final int RANDOM = 10;
@@ -32,7 +32,7 @@ public class TestPrim {
 	@Test
 	public void test() {
 		matrizDirigido.mostarMatriz();
-		Prim prim = new Prim(matriz);
-		prim.mostarResultado();
+		Kruskal kruskal = new Kruskal(matriz);
+		kruskal.mostarResultado();
 	}
 }

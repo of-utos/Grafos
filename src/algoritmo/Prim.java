@@ -48,11 +48,12 @@ public class Prim {
 		}
 		this.pesoMinimo[0] = 0;
 		this.padre[0] = -1;
+		int i;
 		for (int count = 0; count < this.tamaño - 1; count++) {
-			int i = menorPeso();
+			i = menorPeso();
 			this.recorridoRealizado[i] = true;
 			for (int j = 0; j < this.tamaño; j++) {
-				if (this.matrizAdyacencia[i][j] != 0 && this.recorridoRealizado[j] == false
+				if (this.matrizAdyacencia[i][j] != Integer.MAX_VALUE && this.recorridoRealizado[j] == false
 						&& this.matrizAdyacencia[i][j] < this.pesoMinimo[j]) {
 					this.padre[j] = i;
 					this.pesoMinimo[j] = this.matrizAdyacencia[i][j];
@@ -80,7 +81,8 @@ public class Prim {
 	}
 
 	/**
-	 * Devuelve la posición de la arista con menor peso. <br>
+	 * Devuelve la posición de la arista con menor peso de algún nodo
+	 * pertenciente al árbol solución. <br>
 	 * 
 	 * @return Índice. <br>
 	 */

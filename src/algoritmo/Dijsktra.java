@@ -1,6 +1,8 @@
 package algoritmo;
 
 /**
+ * Clase que busca el camino de menor costo de un nodo hacia el resto de los
+ * nodos. <br>
  * El grafo puede ser dirigido o no. El grafo debe ser ponderado. <br>
  */
 public class Dijsktra {
@@ -25,10 +27,19 @@ public class Dijsktra {
 	 */
 	private int cantidadNodos;
 	/**
-	 * 
+	 * Ruta para llegar a un nodo. <br>
 	 */
 	private int[] ruta;
 
+	/**
+	 * Resuelve el camino de Dijkstra de un grafo a partir de un nodo de inicio.
+	 * <br>
+	 * 
+	 * @param matrizAdyacencia
+	 *            Matriz de adyacencia del grafo. <br>
+	 * @param nodoInicio
+	 *            Nodo inicial. <br>
+	 */
 	public Dijsktra(final int[][] matrizAdyacencia, final int nodoInicio) {
 		this.matrizAdy = matrizAdyacencia;
 		this.nodoInicio = nodoInicio - 1;
@@ -56,6 +67,12 @@ public class Dijsktra {
 		}
 	}
 
+	/**
+	 * Encuentra el índice del valor mínimo de un nodo no visitado. <br>
+	 * 
+	 * @return Índice del valor mínimo. <br>
+	 *         De no existir camino a los nodos restantes devuelve -1. <br>
+	 */
 	private int minimo() {
 		int valorMinimo = Integer.MAX_VALUE;
 		int indiceMinimo = -1;
@@ -78,6 +95,10 @@ public class Dijsktra {
 		}
 	}
 
+	/**
+	 * Muestra el costo mínimo de un nodo para llegar al resto de los nodos.
+	 * <br>
+	 */
 	public void resultado() {
 		System.out.println("Costo para llegar los nodos desde " + (this.nodoInicio + 1) + ":");
 		for (int i = 0; i < this.cantidadNodos; i++) {
