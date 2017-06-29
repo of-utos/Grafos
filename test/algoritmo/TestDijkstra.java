@@ -10,7 +10,7 @@ public class TestDijkstra {
 
 	private int matriz[][];
 	private static final int TAMAÑO = 5;
-	private static final int RANDOM = 8;
+	private static final int RANDOM = 10;
 	private MatrizAdyacencia matrizDirigido;
 
 	@Before
@@ -22,8 +22,8 @@ public class TestDijkstra {
 	@Test
 	public void test() {
 		matrizDirigido.mostarMatriz();
-		Dijsktra matrizDijkstra = new Dijsktra(matriz, 1);
+		Dijsktra matrizDijkstra = new Dijsktra(matriz,3);
 		matrizDijkstra.resultado();
-		matrizDijkstra.ruta(4);
+		matrizDijkstra.ruta(2);
 	}
 }

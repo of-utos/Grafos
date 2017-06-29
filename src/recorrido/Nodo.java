@@ -1,31 +1,49 @@
 package recorrido;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Nodo {
-	public String stationName;
-	Nodo hijoIzquierdo;
-	Nodo hijoDerecho;
+	int posX;
+	int posY;
+	int numero;
 
-	public Nodo(String stationName, Nodo primerHijo, Nodo segundoHijo) {
-		this.stationName = stationName;
-		this.hijoIzquierdo = primerHijo;
-		this.hijoDerecho = segundoHijo;
+	public Nodo(int x, int y, int nombre) {
+		this.numero = nombre;
+		this.posX = x;
+		this.posY = y;
 	}
 
-	public List<Nodo> getChildren() {
-		List<Nodo> nodosHijos = new ArrayList<>();
-		if (this.hijoIzquierdo != null) {
-			nodosHijos.add(hijoIzquierdo);
-		}
-		if (this.hijoDerecho != null) {
-			nodosHijos.add(hijoDerecho);
-		}
-		return nodosHijos;
+	public double calculaDistancia(Nodo g) {
+		if (this.getPosX() <= g.getPosX() && this.getPosY() <= g.getPosY())
+			return Math.sqrt(Math.pow(g.getPosX() - this.posX, 2) + Math.pow(g.getPosY() - this.posY, 2));
+		return Integer.MAX_VALUE;
 	}
 
-	public boolean quitarHijo(Nodo n) {
-		return false;
+	public int getPosX() {
+		return posX;
 	}
+
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	public int getPosY() {
+		return posY;
+	}
+
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public Nodo clone() {
+		Nodo nuevo = new Nodo(this.posX, this.posY, this.numero);
+		return nuevo;
+	}
+
 }
