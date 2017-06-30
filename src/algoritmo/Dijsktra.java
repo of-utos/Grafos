@@ -1,5 +1,7 @@
 package algoritmo;
 
+import java.util.Stack;
+
 /**
  * Clase que busca el camino de menor costo de un nodo hacia el resto de los
  * nodos. <br>
@@ -118,12 +120,16 @@ public class Dijsktra {
 	 *            Nodo a llegar. <br>
 	 */
 	public void ruta(final int destino) {
+		Stack<Integer> pila = new Stack<Integer>();
 		int anterior = destino - 1;
 		if (this.costos[anterior] != Integer.MAX_VALUE) {
 			System.out.print((this.nodoInicio + 1));
 			while (ruta[anterior] != -1) {
-				System.out.print(" -> " + (ruta[anterior] + 1));
+				pila.push(ruta[anterior]);
 				anterior = ruta[anterior];
+			}
+			while (!pila.isEmpty()) {
+				System.out.print(" -> " + (pila.pop() + 1));
 			}
 			System.out.print(" -> " + destino + "\n");
 			System.out.println("Peso de la ruta: " + this.costos[destino - 1]);

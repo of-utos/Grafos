@@ -9,7 +9,7 @@ import matriz.MatrizDirigido;
 public class TestDijkstra {
 
 	private int matriz[][];
-	private static final int TAMAÑO = 5;
+	private static final int TAMAÑO = 6;
 	private static final int RANDOM = 10;
 	private MatrizAdyacencia matrizDirigido;
 
