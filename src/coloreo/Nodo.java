@@ -29,7 +29,7 @@ public class Nodo {
 	/**
 	 * Crea un nodo. <br>
 	 * 
-	 * @param numero
+	 * @param cantidadAristas
 	 *            Número del nodo. <br>
 	 * @param color
 	 *            Color del nodo. <br>
@@ -83,7 +83,7 @@ public class Nodo {
 	/**
 	 * Establece el número del nodo. <br>
 	 * 
-	 * @param numero
+	 * @param cantidadAristas
 	 *            Número del nodo. <br>
 	 */
 	public void setNumero(final int numero) {
